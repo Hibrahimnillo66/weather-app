@@ -55,7 +55,7 @@ function ForecastDayCard({ day }: ForecastDayCardProps) {
   const firstHourly = day.hourly && day.hourly.length > 0 ? day.hourly[0] : null;
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md aspect-square">
+    <div className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md">
       <p className="font-medium text-sm text-gray-600">{new Date(day.date).toLocaleDateString()}</p>
       {firstHourly?.weather_icons?.[0] ? (
         <img

@@ -10,12 +10,9 @@ export default function Home() {
 
   return (
     <Container>
-      {/* WeatherCard takes 1/3 of the width */}
       <div className="flex-1 lg:basis-1/3">
         <WeatherCard city={city} />
       </div>
-
-      {/* ForecastList takes 2/3 of the width */}
       <div className="flex-2 lg:basis-2/3">
         <ForecastList city={city} />
       </div>
