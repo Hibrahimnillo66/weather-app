@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchCitySuggestions = async (query: string): Promise<{ name: string; country: string }[]> => {
+const fetchCitySuggestions = async (query: string): Promise<{ name: string; country: string }[]> => {
   if (!query.trim()) {
     return [];
   }
@@ -10,7 +10,7 @@ export const fetchCitySuggestions = async (query: string): Promise<{ name: strin
       "https://test.api.amadeus.com/v1/reference-data/locations/cities",
       {
         headers: {
-          Authorization: `Bearer r9dLr7GXSWphRXoU0h1b9OCxKr1B`, // Replace with your token
+          Authorization: `Bearer Djx2C4UUhfXDxUW6VJOcvurWfSWC`,
         },
         params: {
           keyword: query,

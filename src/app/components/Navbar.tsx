@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { fetchCitySuggestions } from "../utils/cityServiceApi"; // Import the external fetch function
 
 export default function Navbar() {
   const [city, setCity] = useState("");
@@ -20,9 +19,16 @@ export default function Navbar() {
     const value = e.target.value;
     setCity(value);
     if (value.trim()) {
-      const cities = await fetchCitySuggestions(value); // Use the external fetch function
-      setSuggestions(cities);
-      setShowSuggestions(cities.length > 0);
+      try {
+        const response = await fetch(`/api/citySuggestions?query=${encodeURIComponent(value)}`);
+        const data = await response.json();
+        setSuggestions(data.suggestions || []);
+        setShowSuggestions(data.suggestions.length > 0);
+      } catch (error) {
+        console.error("Error fetching city suggestions:", error);
+        setSuggestions([]);
+        setShowSuggestions(false);
+      }
     } else {
       setSuggestions([]);
       setShowSuggestions(false);
